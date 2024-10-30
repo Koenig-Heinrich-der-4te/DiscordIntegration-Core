@@ -8,7 +8,7 @@ plugins {
     id 'java'
     id 'com.github.johnrengelman.shadow' version "8+"
 }
-apply plugin: 'maven-publish'
+//apply plugin: 'maven'
 
 //Build variables
 version = "3.1.0-SNAPSHOT"
