@@ -11,7 +11,7 @@ plugins {
 
 //Build variables
 version = "3.1.0-SNAPSHOT"
-group = "de.erdbeerbaerlp.dcintegration.common"
+group = "com.github.Koenig-Heinrich-der-4te"
 archivesBaseName = "dcintegration-core"
 
 

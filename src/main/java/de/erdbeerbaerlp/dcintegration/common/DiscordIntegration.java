@@ -62,6 +62,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class DiscordIntegration {
 
@@ -629,10 +630,10 @@ public class DiscordIntegration {
 
                 if (Configuration.instance().linking.unlinkOnLeave)
                     WorkThread.executeJob(() -> {
+                        Collection<String> memberIds = getChannel().getGuild().getMembers().stream().map(m -> m.getId()).collect(Collectors.toSet());
+
                         for (final PlayerLink p : LinkManager.getAllLinks()) {
-                            try {
-                                getChannel().getGuild().retrieveMemberById(p.discordID).submit();
-                            } catch (ErrorResponseException e) {
+                            if (!memberIds.contains(p.discordID)) {
                                 LinkManager.unlinkPlayer(p.discordID);
                             }
                         }
