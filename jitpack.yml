@@ -1,2 +1,4 @@
 install
   - echo "Test"
+  - ./gradlew build
+  - mv dcintegration-core-3.1.0-SNAPSHOT.jar ~/.m2/repository
